@@ -1,0 +1,2 @@
+Note that to run this, you will need to be added as a test user at https://console.cloud.google.com/home/dashboard?inv=1&invt=AbnULg&project=eventsyncfixer
+and also need to have downloaded the appropriate credentials.json from that same Google Cloud Deveoper Console.
