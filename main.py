@@ -8,6 +8,14 @@ from googleapiclient.http import BatchHttpRequest
 
 # token.pickle has to be deleted to reauth every time SCOPES is altered
 SCOPES = ['https://www.googleapis.com/auth/calendar.events.owned']
+COLORS = {
+    "family and friends": "2",
+    "classes": "5", 
+    "extracurricular": "4",
+    "fitness": "7",
+    "work": "10"
+
+}
 
 def reset_and_write_file(filename, data):
     with open(filename, 'w') as file:
@@ -236,7 +244,9 @@ def main():
     reset_and_write_file('debug.txt', 'Initial content:\n')
     service = build('calendar', 'v3', credentials=creds)
     # delete_calendar_duplicates(service, "primary")
-    update_event_colors_by_keyword(service, "primary", "CHEM-", "5")
+    update_event_colors_by_keyword(service, "primary", "CHEM-", COLORS["clases"])
+    update_event_colors_by_keyword(service, "primary", "Swim", COLORS["fitness"])
+    update_event_colors_by_keyword(service, "primary", "Lift", COLORS["fitness"])
     # color_explorer(service)
 if __name__ == '__main__':
     main()
