@@ -9,12 +9,14 @@ from googleapiclient.http import BatchHttpRequest
 # token.pickle has to be deleted to reauth every time SCOPES is altered
 SCOPES = ['https://www.googleapis.com/auth/calendar.events.owned']
 COLORS = {
-    "family and friends": "2",
-    "classes": "5", 
-    "extracurricular": "4",
-    "fitness": "7",
-    "work": "10"
-
+    "family and friends": "2", # green
+    "classes": "5", # yellow
+    "extracurricular": "4", # red
+    "fitness": "7", # teal
+    "work": "10", # green
+    "networking, outreach": "8", # gray
+    "personal development": "3", # lavendar
+    "chores": "1" # baby blue
 }
 
 def reset_and_write_file(filename, data):
@@ -244,9 +246,36 @@ def main():
     reset_and_write_file('debug.txt', 'Initial content:\n')
     service = build('calendar', 'v3', credentials=creds)
     # delete_calendar_duplicates(service, "primary")
-    update_event_colors_by_keyword(service, "primary", "CHEM-", COLORS["clases"])
+    update_event_colors_by_keyword(service, "primary", "CHEM-", COLORS["classes"])
+    update_event_colors_by_keyword(service, "primary", "CS-", COLORS["classes"])
+    update_event_colors_by_keyword(service, "primary", "PHIL-", COLORS["classes"])
+    update_event_colors_by_keyword(service, "primary", "homework", COLORS["classes"])
+    update_event_colors_by_keyword(service, "primary", "capstone", COLORS["classes"])
+    update_event_colors_by_keyword(service, "primary", "STS-", COLORS["classes"])
+    update_event_colors_by_keyword(service, "primary", "Alex", COLORS["family and friends"])
+    update_event_colors_by_keyword(service, "primary", "Maddi", COLORS["family and friends"])
+    update_event_colors_by_keyword(service, "primary", "Jordan", COLORS["family and friends"])
+    update_event_colors_by_keyword(service, "primary", "Maman", COLORS["family and friends"])
+    update_event_colors_by_keyword(service, "primary", "Gabby", COLORS["family and friends"])
+    update_event_colors_by_keyword(service, "primary", "Kayla", COLORS["family and friends"])
+    update_event_colors_by_keyword(service, "primary", "Morgan", COLORS["family and friends"])
+    update_event_colors_by_keyword(service, "primary", "friends", COLORS["family and friends"])
     update_event_colors_by_keyword(service, "primary", "Swim", COLORS["fitness"])
     update_event_colors_by_keyword(service, "primary", "Lift", COLORS["fitness"])
+    update_event_colors_by_keyword(service, "primary", "Doctor", COLORS["fitness"])
+    update_event_colors_by_keyword(service, "primary", "Dentist", COLORS["fitness"])
+    update_event_colors_by_keyword(service, "primary", "Workout", COLORS["fitness"])
+    update_event_colors_by_keyword(service, "primary", "Robin", COLORS["networking, outreach"])
+    update_event_colors_by_keyword(service, "primary", "E-week", COLORS["networking, outreach"])
+    update_event_colors_by_keyword(service, "primary", "Mixer", COLORS["networking, outreach"])
+    update_event_colors_by_keyword(service, "primary", "Megan", COLORS["networking, outreach"])
+    update_event_colors_by_keyword(service, "primary", "Ambassadors", COLORS["networking, outreach"])
+    update_event_colors_by_keyword(service, "primary", "cubesat", COLORS["extracurricular"])
+    update_event_colors_by_keyword(service, "primary", "roboard", COLORS["extracurricular"])
+    update_event_colors_by_keyword(service, "primary", "pacbot", COLORS["extracurricular"]) 
+    update_event_colors_by_keyword(service, "primary", "notetaking", COLORS["personal development"])
+    update_event_colors_by_keyword(service, "primary", "notes", COLORS["personal development"])
+    update_event_colors_by_keyword(service, "primary", "readings", COLORS["personal development"])
     # color_explorer(service)
 if __name__ == '__main__':
     main()
